@@ -27,6 +27,11 @@ public class ServiceEmpresa {
         return serviceEmpresa.findByRuc(ruc);
     }
 
+    public  void deleteByid(Integer codEmpresa){
+
+        serviceEmpresa.deleteById(codEmpresa);
+    }
+
 
 
 

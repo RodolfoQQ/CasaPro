@@ -35,9 +35,22 @@ public class ControllerClienteEmpresa {
           return  ResponseEntity.status(HttpStatus.CREATED).body(cliente);
     }
 
+
+
+    @PutMapping("/{codEmpresa}")
+    public ResponseEntity<ClienteEmpresa> updateClienteempresa(@PathVariable Integer codEmpresa, @RequestBody ClienteEmpresa empresa){
+
+
+
+        empresa.setCodEmpresa(codEmpresa);
+
+        return  ResponseEntity.status(HttpStatus.CREATED).body(serviceEmpresa.saveEmpresa(empresa));
+    }
+
     @GetMapping
-    public List<ClienteEmpresa> findall(){
-        return  serviceEmpresa.findall();
+    public  ResponseEntity<?> findall(){
+
+        return  ResponseEntity.ok( serviceEmpresa.findall());
     }
 
     @GetMapping("/{ruc}")
@@ -50,6 +63,13 @@ public class ControllerClienteEmpresa {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{codEmpresa}")
+    public ResponseEntity<?> deletedByid(@PathVariable Integer codEmpresa){
+
+        serviceEmpresa.deleteByid(codEmpresa);
+        return ResponseEntity.ok().build();
     }
 
 

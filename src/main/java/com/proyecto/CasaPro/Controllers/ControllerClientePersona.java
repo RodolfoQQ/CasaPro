@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-@RestController("http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200"})
+@RestController
 @RequestMapping("/api/persona")
 public class ControllerClientePersona {
 
@@ -26,9 +27,9 @@ public class ControllerClientePersona {
     }
 
     @GetMapping
-    public  ResponseEntity<?> listall(){
+    public ResponseEntity <?>listall(){
 
-      return  ResponseEntity.ok(servicePersona.findall());
+      return  ResponseEntity.ok( servicePersona.findall() );
     }
 
     @DeleteMapping("/{codpersona}")
@@ -51,7 +52,7 @@ public class ControllerClientePersona {
 
     @PutMapping("/{codpersona}")
     public ResponseEntity<ClientePersona> updatePersona(@PathVariable Integer codpersona, @RequestBody ClientePersona persona){
-        //    persona.setCodpersona(codpersona);
+           persona.setCodpersona(codpersona);
         return ResponseEntity.status(HttpStatus.CREATED).body(servicePersona.savePersona(persona));
     }
 

@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Generated;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "Clientpersona")
 @Data
@@ -25,6 +28,18 @@ public class ClientePersona {
     private String telefono;
 
     private  String correo;
+
+    @OneToMany(mappedBy ="clientePersona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PedidoFactura> pedidoFacturas;
+
+    public  ClientePersona(){
+        pedidoFacturas=new ArrayList<PedidoFactura>();
+    }
+
+    public  void addPedido(PedidoFactura pedidoFactura){
+        pedidoFacturas.add(pedidoFactura);
+    }
+
 
 
 }

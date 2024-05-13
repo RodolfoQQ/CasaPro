@@ -54,15 +54,12 @@ public class ControllerClienteEmpresa {
     }
 
     @GetMapping("/{ruc}")
-    public ResponseEntity<?> findbyRuc(@PathVariable String ruc){
+    public ResponseEntity<?> buscarClientePorRucODNI(@PathVariable String ruc){
 
-     Optional<ClienteEmpresa>  clienteEmpresa= Optional.ofNullable(serviceEmpresa.finsByRuc(ruc));
-        if (clienteEmpresa.isPresent()){
-            return  ResponseEntity.ok(clienteEmpresa.orElseThrow());
+       //Optional<ClienteEmpresa>  clienteEmpresa= Optional.ofNullable(serviceEmpresa.finsByRuc(ruc));
+        ClienteEmpresa empresa=serviceEmpresa.finsByRuc(ruc);
 
-        }
-
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(empresa);
     }
 
     @DeleteMapping("/{codEmpresa}")

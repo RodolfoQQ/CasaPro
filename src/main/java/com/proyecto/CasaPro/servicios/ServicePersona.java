@@ -26,7 +26,7 @@ public class ServicePersona {
          repository.deleteById(codpersona);
     }
 
-    public  List<ClientePersona>  findbyDNI(String dni){
+    public  ClientePersona  findbyDNI(String dni){
         return  repository.findByDniLikeIgnoreCase(dni);
     }
 }

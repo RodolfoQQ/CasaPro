@@ -11,7 +11,7 @@ import java.util.List;
 public interface RepositoryClientePersona extends JpaRepository<ClientePersona,Integer> {
 
 
-    public List<ClientePersona> findByDniLikeIgnoreCase(String dni);
+    public ClientePersona findByDniLikeIgnoreCase(String dni);
 
 
 

@@ -41,13 +41,11 @@ public class ControllerClientePersona {
 
     @GetMapping("/{dni}")
     public ResponseEntity<?> findbyDNI( @PathVariable String dni){
-       List <ClientePersona>cliente=servicePersona.findbyDNI(dni);
 
-       if (cliente.isEmpty()){
-           return ResponseEntity.noContent().build();
-       }
+       ClientePersona persona =servicePersona.findbyDNI(dni);
 
-        return ResponseEntity.ok(cliente);
+
+        return ResponseEntity.ok(persona);
     }
 
     @PutMapping("/{codpersona}")

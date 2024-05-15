@@ -33,4 +33,8 @@ private RepositoryProducto repositoryProducto;
         repositoryProducto.deleteById(codProducto);
     }
 
+    public  List<Producto> autocompleteProdcuto(String term){
+        return  repositoryProducto.findByNombreProductoContainingIgnoreCase(term);
+    }
+
 }

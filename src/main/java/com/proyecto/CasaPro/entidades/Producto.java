@@ -18,4 +18,6 @@ public class Producto {
 
     private String nombreProducto;
 
+    private String descripcion;
+
 }

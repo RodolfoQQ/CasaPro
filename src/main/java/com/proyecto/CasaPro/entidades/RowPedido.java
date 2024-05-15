@@ -18,6 +18,8 @@ public class RowPedido {
     @JoinColumn(name = "id_producto")
     private  Producto producto;
 
+    private Integer cantidadPormayor;
+
 
 
 

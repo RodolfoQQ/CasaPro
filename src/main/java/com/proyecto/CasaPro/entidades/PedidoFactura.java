@@ -13,7 +13,8 @@ import java.util.List;
 public class PedidoFactura {
 
     @Id
-    Integer codPedido;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   public Integer codPedido;
 
     @Temporal(TemporalType.DATE)
     public Date fecha;

@@ -65,4 +65,11 @@ public class ControllerProducto {
         return ResponseEntity.ok(mensaje);
     }
 
+    @GetMapping("/filtrar/{term}")
+    @ResponseStatus(HttpStatus.OK)
+    public  List<Producto>  autoCompleteProducto(@PathVariable String term){
+
+        return serviceProducto.autocompleteProdcuto(term);
+    }
+
 }

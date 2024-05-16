@@ -1,7 +1,10 @@
 package com.proyecto.CasaPro.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.io.Serializable;
 
 @Entity
 @Table
@@ -10,16 +13,14 @@ public class RowPedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codPedido;
+    private Integer codrowpedido;
 
      private Integer cantidad;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"producto","hibernateLazyInitializer","handler"})
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_producto")
     private  Producto producto;
-
-    private Integer cantidadPormayor;
-
 
 
 

@@ -1,6 +1,7 @@
 package com.proyecto.CasaPro.entidades;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Generated;
@@ -29,6 +30,7 @@ public class ClientePersona {
 
     private  String correo;
 
+    @JsonIgnoreProperties({"clientePersona","hibernateLazyInitializer","handler"})
     @OneToMany(mappedBy ="clientePersona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PedidoFactura> pedidoFacturas;
 

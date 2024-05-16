@@ -1,5 +1,6 @@
 package com.proyecto.CasaPro.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -28,11 +29,12 @@ public class PedidoFactura {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"pedidoFacturas","hibernateLazyInitializer","handler"})
     public  ClientePersona clientePersona;
 
-
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_pedidos")
+    @JsonIgnoreProperties({"pedidoFacturas","hibernateLazyInitializer","handler"})
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "codPedidofactura")
     public List<RowPedido> rowPedidos;
 
 

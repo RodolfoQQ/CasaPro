@@ -18,7 +18,7 @@ public class RowPedido {
      private Integer cantidad;
 
     @JsonIgnoreProperties({"producto","hibernateLazyInitializer","handler"})
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_producto")
     private  Producto producto;
 

@@ -20,9 +20,9 @@ public class PedidoFactura {
     @Temporal(TemporalType.DATE)
     public Date fecha;
 
-    public void insertardateactual(){
+   /* public void insertardateactual(){
         fecha=new Date();
-    }
+    }*/
 
     public  PedidoFactura(){
         this.rowPedidos=new ArrayList<RowPedido>();

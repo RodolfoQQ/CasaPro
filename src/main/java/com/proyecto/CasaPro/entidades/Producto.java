@@ -1,5 +1,6 @@
 package com.proyecto.CasaPro.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,5 +20,6 @@ public class Producto {
     private String nombreProducto;
 
     private String descripcion;
+
 
 }

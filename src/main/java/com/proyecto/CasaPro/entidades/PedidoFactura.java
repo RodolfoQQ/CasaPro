@@ -20,9 +20,10 @@ public class PedidoFactura {
     @Temporal(TemporalType.DATE)
     public Date fecha;
 
-   /* public void insertardateactual(){
+    @PrePersist
+    public void insertardateactual(){
         fecha=new Date();
-    }*/
+    }
 
     public  PedidoFactura(){
         this.rowPedidos=new ArrayList<RowPedido>();
@@ -33,10 +34,17 @@ public class PedidoFactura {
     public  ClientePersona clientePersona;
 
     @JsonIgnoreProperties({"pedidoFacturas","hibernateLazyInitializer","handler"})
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "codPedidofactura")
     public List<RowPedido> rowPedidos;
 
+    @JsonIgnoreProperties({ "hibernateLazyInitializer","handler"})
+    @OneToOne(cascade = {CascadeType.ALL, CascadeType.MERGE},fetch = FetchType.LAZY)
+    public TipoEntrega tipoEntrega;
+
+    @JsonIgnoreProperties({ "hibernateLazyInitializer","handler"})
+    @ManyToOne
+    private Estado estado;
 
     public  void  addrowPedidos(RowPedido rowPedido){
         this.rowPedidos.add(rowPedido);

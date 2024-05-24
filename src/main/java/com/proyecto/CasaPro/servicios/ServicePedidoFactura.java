@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicePedidoFactura {
@@ -24,6 +25,15 @@ public class ServicePedidoFactura {
 
         return  service.findAll();
     }
+
+    public void elimiarPedido( Integer codPedido ){
+        service.deleteById(codPedido);
+    }
+
+    public PedidoFactura findbycodFactura(Integer codPedido){
+        return service.findById(codPedido).orElse(null);
+    }
+
 
 
 

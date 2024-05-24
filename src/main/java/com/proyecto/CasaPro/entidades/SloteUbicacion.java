@@ -4,22 +4,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
-@Table
-@Data
+import java.util.List;
 
-public class Producto {
+@Entity
+@Table(name = "ubicacion")
+@Data
+public class SloteUbicacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codProducto;
-
-    @ManyToOne
-    private Categoria categoria;
-
-    private String nombreProducto;
+    private Integer codUbicacion;
 
     private String descripcion;
+
+    @OneToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    private Producto productos;
 
 
 

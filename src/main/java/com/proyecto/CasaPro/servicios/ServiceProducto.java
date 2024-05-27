@@ -1,5 +1,6 @@
 package com.proyecto.CasaPro.servicios;
 
+import com.proyecto.CasaPro.entidades.Categoria;
 import com.proyecto.CasaPro.entidades.Producto;
 import com.proyecto.CasaPro.repositorios.RepositoryProducto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,10 @@ private RepositoryProducto repositoryProducto;
 
     public  List<Producto> autocompleteProdcuto(String term){
         return  repositoryProducto.findByNombreProductoContainingIgnoreCase(term);
+    }
+
+    public  List<Producto> listaProductoProcategoria(Categoria codCategoria){
+        return  repositoryProducto.findByProductoPorCategoria(codCategoria);
     }
 
 }

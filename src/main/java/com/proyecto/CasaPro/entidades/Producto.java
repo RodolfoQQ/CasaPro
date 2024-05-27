@@ -14,7 +14,8 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codProducto;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Categoria categoria;
 
     private String nombreProducto;

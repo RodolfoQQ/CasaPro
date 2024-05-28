@@ -15,7 +15,7 @@ public class Producto {
     private Integer codProducto;
 
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @JsonIgnoreProperties({"productos","hibernateLazyInitializer","handler"})
     private Categoria categoria;
 
     private String nombreProducto;

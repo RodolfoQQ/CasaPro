@@ -2,7 +2,10 @@ package com.proyecto.CasaPro.Controllers;
 
 import com.proyecto.CasaPro.entidades.Estado;
 import com.proyecto.CasaPro.entidades.PedidoFactura;
+import com.proyecto.CasaPro.entidades.RowPedido;
+import com.proyecto.CasaPro.entidades.SloteUbicacion;
 import com.proyecto.CasaPro.servicios.ServicePedidoFactura;
+import com.proyecto.CasaPro.servicios.ServicioUbicacion;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,9 @@ public class ControllerPedidoFactura {
     @Autowired
     private ServicePedidoFactura service;
 
+    @Autowired
+    private ServicioUbicacion servicioUbicacion;
+
     @GetMapping
     public List<PedidoFactura> listarAllPedidosClientes(){
 
@@ -29,11 +35,15 @@ public class ControllerPedidoFactura {
 
     @PostMapping
     public  ResponseEntity<?>savePedido(@RequestBody PedidoFactura pedidoFactura ){
-            Estado estado=new Estado();
+
+        Estado estado=new Estado();
                     estado.setCodEstado(2);
                     pedidoFactura.setEstado(estado);
 
-                    PedidoFactura savepedido=service.savePedido(pedidoFactura);
+
+
+
+            PedidoFactura savepedido=service.savePedido(pedidoFactura);
 
             HashMap<String,Object> respose = new HashMap<>();
             respose.put("estado",estado);

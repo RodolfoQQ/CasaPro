@@ -30,9 +30,7 @@ public class ControllerClienteEmpresa {
 
        HashMap<String, Object> cliente= new HashMap<>();
         cliente.put("empresa",serviceEmpresa.saveEmpresa(empresa));
-
-
-          return  ResponseEntity.status(HttpStatus.CREATED).body(cliente);
+         return  ResponseEntity.status(HttpStatus.CREATED).body(cliente);
     }
 
 

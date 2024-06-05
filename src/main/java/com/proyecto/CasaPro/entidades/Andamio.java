@@ -16,6 +16,7 @@ public class Andamio {
 
     private String descripcionandamio;
 
+
     @JsonIgnoreProperties({"andamio","hibernateLazyInitializer","handler"})
     @OneToMany(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     @JoinColumn(name = "andamiofk")

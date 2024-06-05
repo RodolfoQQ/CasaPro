@@ -18,7 +18,7 @@ public class PisosAndamio {
 
 
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.ALL,CascadeType.MERGE})
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @JoinColumn(name = "pisofk")
     private List<SloteUbicacion> ubicacion;

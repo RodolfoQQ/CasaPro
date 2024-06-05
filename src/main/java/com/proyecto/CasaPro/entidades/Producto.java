@@ -23,5 +23,13 @@ public class Producto {
     private String descripcion;
 
 
+    @ManyToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"producto","hibernateLazyInitializer","handler"})
+    @JoinColumn(name = "")
+    private SloteUbicacion ubicacion;
 
+    /*  @OneToOne(mappedBy = "producto", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"producto","hibernateLazyInitializer","handler"})
+    private SloteUbicacion ubicacion;
+*/
 }

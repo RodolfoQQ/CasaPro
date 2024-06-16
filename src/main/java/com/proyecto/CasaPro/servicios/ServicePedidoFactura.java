@@ -26,7 +26,7 @@ public class ServicePedidoFactura {
     public PedidoFactura savePedido(PedidoFactura pedidoFactura){
         PedidoFactura dataPedidoFacturaSaved= service.save(pedidoFactura);
 
-
+/*
         for (RowPedido rowPedido:pedidoFactura.getRowPedidos()){
             Producto producto=rowPedido.getProducto();
             SloteUbicacion ubicacion=producto.getUbicacion();
@@ -34,14 +34,14 @@ public class ServicePedidoFactura {
             if(ubicacion !=null){
                 ubicacion.restarCantidadaStock(rowPedido.getCantidad());
                 producto.setUbicacion(ubicacion);
-                /*ubicacion.setProducto(producto);*/
+                /*ubicacion.setProducto(producto);
                 repositoryUbicacion.save(ubicacion);
 
                 repositoryUbicacion.save(ubicacion);
             }else {
                 throw  new RuntimeException("Producto "+producto.getNombreProducto()+" sin ubicacion ");
             }
-   }
+        }*/
 
 
         return dataPedidoFacturaSaved;

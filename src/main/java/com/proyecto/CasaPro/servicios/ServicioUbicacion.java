@@ -25,17 +25,20 @@ public class ServicioUbicacion {
         repository.deleteById(codUbicacion);
     }
 
+    //evaluar este metdo para eliminar
+    /*
     public SloteUbicacion actualizarProdcutoOnubicacion (Integer codUbicacion,Integer codPRoducto){
         Producto producto =repositoryProducto.findById(codPRoducto).orElseThrow(()-> new RuntimeException("Error en ecnotrar el producto"));
         SloteUbicacion ubicacion =repository.findById(codUbicacion).orElseThrow(()-> new RuntimeException("Error en encontrar ubicacion"));
 
         //ubicacion(producto);
         return repository.save(ubicacion);
-    }
+    }*/
 
-    public  SloteUbicacion findUbicacion(Integer codUbicacion){
+   /* public  SloteUbicacion findUbicacion(Integer codUbicacion){
 
         return repository.findById(codUbicacion).orElseThrow(()-> new RuntimeException("No se encontro la ubicacion"));
-    }
+    }*/
+
 
 }

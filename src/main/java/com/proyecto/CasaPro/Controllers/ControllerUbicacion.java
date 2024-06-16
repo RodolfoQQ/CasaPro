@@ -28,7 +28,7 @@ public class ControllerUbicacion {
 
     }
 
-    @PutMapping({"/{codUbicacion}/{codPRoducto}"})
+    /*@PutMapping({"/{codUbicacion}/{codPRoducto}"})
     public  ResponseEntity<?> actualizarProdutoOnUbicacion(@PathVariable Integer codUbicacion,@PathVariable Integer codPRoducto){
 
             service.actualizarProdcutoOnubicacion(codUbicacion,codPRoducto);
@@ -36,7 +36,7 @@ public class ControllerUbicacion {
 
 
         return  ResponseEntity.status(HttpStatus.OK).build();
-    }
+    }*/
 
 
 }

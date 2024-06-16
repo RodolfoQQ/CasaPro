@@ -24,4 +24,9 @@ public class ControllerAlmacen {
        List<Andamio> response= service.findAllandamio();
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/detallessinubicacion")
+    public ResponseEntity<?> listaObjetodetallesSinUbicacion(){
+        return ResponseEntity.ok(service.listaObjetodetallesSinUbicacion());
+    }
 }

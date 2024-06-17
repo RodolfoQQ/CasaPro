@@ -22,6 +22,10 @@ public class RowPedido {
     @JoinColumn(name = "id_producto")
     private  Producto producto;
 
+/*
+    public  void restarCantidadRelinaAstockGeneraldeDetalle(){
+        return cantidad
+    }*/
 
 
 }

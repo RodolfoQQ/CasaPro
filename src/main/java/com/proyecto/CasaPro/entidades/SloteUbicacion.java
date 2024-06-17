@@ -24,28 +24,4 @@ public class SloteUbicacion {
 
 
 
-
-    //private Integer stock;
-
-    /*@OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "productofk")
-    private List<Producto> productos = new ArrayList<>();
-*/
-    /*
-    @OneToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"ubicacion","hibernateLazyInitializer","handler"})
-    @JoinColumn(name = "productos_cod_producto")
-    private Producto producto;
-*//*
-    public void restarCantidadaStock(Integer candiad){
-
-        if (this.stock>candiad){
-                this.stock-=candiad;
-        }else {
-            throw  new RuntimeException("Stock insificiente");
-        }
-    }*/
-
-
 }

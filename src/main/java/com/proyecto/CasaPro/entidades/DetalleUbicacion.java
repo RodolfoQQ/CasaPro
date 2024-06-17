@@ -24,4 +24,9 @@ public class DetalleUbicacion {
     @JsonIgnoreProperties({"detalleUbicacion","handler", "hibernateLazyInitializer"})
     private SloteUbicacion ubicacion;
 
+
+    private  Integer stock;
+
+
+
 }

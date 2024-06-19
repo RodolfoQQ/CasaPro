@@ -1,10 +1,9 @@
 package com.proyecto.CasaPro.servicios;
 
-import com.proyecto.CasaPro.entidades.PedidoFactura;
-import com.proyecto.CasaPro.entidades.Producto;
-import com.proyecto.CasaPro.entidades.RowPedido;
-import com.proyecto.CasaPro.entidades.SloteUbicacion;
+import com.proyecto.CasaPro.entidades.*;
+import com.proyecto.CasaPro.repositorios.RepositoryDetalleUbicacion;
 import com.proyecto.CasaPro.repositorios.RepositoryPedidoFactura;
+import com.proyecto.CasaPro.repositorios.RepositoryProducto;
 import com.proyecto.CasaPro.repositorios.RepositoryUbicacion;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,30 +21,29 @@ public class ServicePedidoFactura {
     @Autowired
     private RepositoryUbicacion repositoryUbicacion;
 
+    @Autowired
+    private RepositoryDetalleUbicacion repositoryDetalleUbicacion;
+
     @Transactional
     public PedidoFactura savePedido(PedidoFactura pedidoFactura){
         PedidoFactura dataPedidoFacturaSaved= service.save(pedidoFactura);
 
-/*
-        for (RowPedido rowPedido:pedidoFactura.getRowPedidos()){
-            Producto producto=rowPedido.getProducto();
-            SloteUbicacion ubicacion=producto.getUbicacion();
+        List<RowPedido> rowPedidos=pedidoFactura.getRowPedidos();
+        for (RowPedido row :rowPedidos){
+            Producto producto =row.getProducto();
+            Integer cantidad=row.getCantidad();
 
-            if(ubicacion !=null){
-                ubicacion.restarCantidadaStock(rowPedido.getCantidad());
-                producto.setUbicacion(ubicacion);
-                /*ubicacion.setProducto(producto);
-                repositoryUbicacion.save(ubicacion);
-
-                repositoryUbicacion.save(ubicacion);
-            }else {
-                throw  new RuntimeException("Producto "+producto.getNombreProducto()+" sin ubicacion ");
+            DetalleUbicacion prodcutodelDetalle= repositoryDetalleUbicacion.buscaDetallePorProducto(producto.getCodProducto());
+            if (prodcutodelDetalle !=null){
+                    prodcutodelDetalle.setStock(prodcutodelDetalle.getStock()-cantidad);
+                    repositoryDetalleUbicacion.save(prodcutodelDetalle);
             }
-        }*/
+        }
 
-
-        return dataPedidoFacturaSaved;
+      return dataPedidoFacturaSaved;
     }
+
+
 
     public List<PedidoFactura> listaPedidosPersona(){
 

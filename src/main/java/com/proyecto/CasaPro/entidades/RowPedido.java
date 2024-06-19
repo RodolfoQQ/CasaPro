@@ -9,23 +9,25 @@ import java.io.Serializable;
 @Entity
 @Table
 @Data
-public class RowPedido {
+    public class RowPedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codrowpedido;
 
-     private Integer cantidad;
+    private Integer cantidad;
 
-    @JsonIgnoreProperties({"producto","hibernateLazyInitializer","handler"})
+    @JsonIgnoreProperties({"producto", "hibernateLazyInitializer", "handler"})
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_producto")
-    private  Producto producto;
+    private Producto producto;
 
-/*
-    public  void restarCantidadRelinaAstockGeneraldeDetalle(){
-        return cantidad
-    }*/
 
+//aqui por cada linea debe res tar la cantidad de rowpedido a detalleubicaion.stock
+  /*  public  void restarCantidadRelinaAstockGeneraldeDetalle(){
+        return cantidad.doubleValue()-
+
+
+}*/
 
 }

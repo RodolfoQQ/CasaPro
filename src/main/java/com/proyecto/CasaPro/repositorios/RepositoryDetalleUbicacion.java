@@ -14,13 +14,16 @@ import java.util.List;
 public interface RepositoryDetalleUbicacion extends JpaRepository<DetalleUbicacion,Integer> {
 
 @Query(value = "select d.cod_detalleub , d.ubicacion_cod_ubicacion ,p.cod_producto, p.nombre_producto, c.cod_categoria  from detalleubicacion d  inner join producto p on p.cod_producto =d.id_producto inner join categoria c " +
-        "on c.cod_categoria =p.categoria_cod_categoria  where d.ubicacion_cod_ubicacion  =11 and c.cod_categoria = :codcategoria ", nativeQuery = true)
+        "on c.cod_categoria =p.categoria_cod_categoria  where d.ubicacion_cod_ubicacion  =31 and c.cod_categoria = :codcategoria ", nativeQuery = true)
     List<Object[]> listaDetalleProdcutosdisponibles (@Param("codcategoria") Integer codcategoria);
 
 @Modifying
 @Query(value = "update  detalleubicacion set ubicacion_cod_ubicacion =:codubicacion  where cod_detalleub =:coddetalle", nativeQuery = true)
 void updateUbicacionOndetalle (@Param("codubicacion") Integer codubicacion, @Param("coddetalle") Integer coddetalle );
 
+
+    @Query(value = "select * from detalleubicacion d  where d.id_producto=:codprodcuto", nativeQuery = true)
+    DetalleUbicacion buscaDetallePorProducto(@Param("codprodcuto")  Integer codprodcuto);
 }
 
 

@@ -22,6 +22,7 @@ public class ClientePersona {
 
     private String apellidos;
 
+    @Column(unique = true, nullable = false)
     private String dni;
 
     private String direccion;
@@ -38,9 +39,6 @@ public class ClientePersona {
         pedidoFacturas=new ArrayList<PedidoFactura>();
     }
 
-    public  void addPedido(PedidoFactura pedidoFactura){
-        pedidoFacturas.add(pedidoFactura);
-    }
 
 
 

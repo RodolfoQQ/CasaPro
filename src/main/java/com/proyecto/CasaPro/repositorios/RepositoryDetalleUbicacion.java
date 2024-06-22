@@ -2,6 +2,8 @@ package com.proyecto.CasaPro.repositorios;
 
 import com.proyecto.CasaPro.entidades.DetalleUbicacion;
 import com.proyecto.CasaPro.entidades.DtoAddDetalleubicacion;
+import com.proyecto.CasaPro.entidades.Producto;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,6 +26,12 @@ void updateUbicacionOndetalle (@Param("codubicacion") Integer codubicacion, @Par
 
     @Query(value = "select * from detalleubicacion d  where d.id_producto=:codprodcuto", nativeQuery = true)
     DetalleUbicacion buscaDetallePorProducto(@Param("codprodcuto")  Integer codprodcuto);
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM DetalleUbicacion d WHERE d.productos = :producto")
+    void deleteByProducto(@Param("producto") Producto producto);
+
 }
 
 

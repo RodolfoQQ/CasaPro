@@ -15,8 +15,7 @@ public class DetalleUbicacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codDetalleub;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-  //@JsonIgnoreProperties({"","handler", "hibernateLazyInitializer"})
+    @ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_producto")
     private Producto productos;
 

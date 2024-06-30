@@ -1,11 +1,9 @@
 package com.proyecto.CasaPro.Controllers;
 
-import com.proyecto.CasaPro.entidades.DtoAddDetalleubicacion;
+import com.proyecto.CasaPro.entidades.dto.DtoAddDetalleubicacion;
 import com.proyecto.CasaPro.servicios.ServiceDetalleUbicacion;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

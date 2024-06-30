@@ -5,14 +5,17 @@ import com.proyecto.CasaPro.entidades.Producto;
 import com.proyecto.CasaPro.exceptions.ResourceNotFoundException;
 import com.proyecto.CasaPro.servicios.ServiceCaTegoria;
 import com.proyecto.CasaPro.servicios.ServiceProducto;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -22,11 +25,14 @@ import java.util.Optional;
 public class ControllerProducto {
 
     private ServiceProducto serviceProducto;
-    //private ServiceCaTegoria repositoryCategoria;
 
 
     @PostMapping
-    public ResponseEntity<?> guardarProducto(@RequestBody Producto producto){
+    public ResponseEntity<?> guardarProducto(@Valid @RequestBody Producto producto, BindingResult result){
+        if (result.hasErrors()){
+            return validacion(result);
+        }
+
         Producto productoGuardado = serviceProducto.guardarProducto(producto);
         HashMap<String,Object> productoHashMap =new HashMap<>();
         if(productoGuardado!=null) {
@@ -39,7 +45,10 @@ public class ControllerProducto {
     }
 
     @PutMapping("{codproducto}")
-    public ResponseEntity<?> actualizarProducto(@PathVariable Integer codproducto, @RequestBody Producto producto){
+    public ResponseEntity<?> actualizarProducto(@Valid  @RequestBody Producto producto, BindingResult result,@PathVariable Integer codproducto){
+        if (result.hasErrors()){
+            return validacion(result);
+        }
         HashMap<String,Object> respose=new HashMap<>();
         Producto productoActualizado= serviceProducto.actualizaProducto( codproducto, producto);
         if(productoActualizado!=null){
@@ -98,6 +107,13 @@ public class ControllerProducto {
         return serviceProducto.autocompleteProdcuto(term);
     }
 
+    private  ResponseEntity<?>validacion(BindingResult bindingResult){
+        Map<String,String> maperrors=new HashMap<>();
+        bindingResult.getFieldErrors().forEach(error->{
+            maperrors.put(error.getField(),"El campo "+error.getField()+" "+error.getDefaultMessage());
+        });
 
+        return ResponseEntity.badRequest().body(maperrors);
+    }
 
 }

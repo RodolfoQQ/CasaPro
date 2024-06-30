@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/piso")
 public class ControllePiso {
-
+//evaluar a elimianr no se usa
     @Autowired
     private ServicioPiso servicioPiso;
 

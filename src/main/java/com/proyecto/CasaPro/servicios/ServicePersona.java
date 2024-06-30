@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicePersona {
@@ -23,10 +24,16 @@ public class ServicePersona {
     }
 
     public void deletebyId(Integer codpersona){
-         repository.deleteById(codpersona);
+
+        repository.deleteById(codpersona);
     }
 
     public  ClientePersona  findbyDNI(String dni){
-        return  repository.findByDniLikeIgnoreCase(dni);
+        return  repository.findByDniLikeIgnoreCase(dni).orElse(null);
+    }
+
+    public Optional<ClientePersona>  findBycod(Integer codPersona){
+
+        return  repository.findById(codPersona);
     }
 }

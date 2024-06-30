@@ -10,7 +10,7 @@ public class ServicePersonaYEmpresa {
     private ServicePersona persona;
     @Autowired
     private ServiceEmpresa empresa;
-
+/*
     public Object buscarPorDNIoRUC (String rucODni){
 
             if (rucODni.length()>8){
@@ -19,5 +19,5 @@ public class ServicePersonaYEmpresa {
                 return persona.findbyDNI(rucODni);
             }
 
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package com.proyecto.CasaPro.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -29,9 +30,16 @@ public class PedidoFactura {
         this.rowPedidos=new ArrayList<RowPedido>();
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"pedidoFacturas","hibernateLazyInitializer","handler"})
     public  ClientePersona clientePersona;
+
+
+
+  /*   @JsonIgnoreProperties({"pedidoFacturas", "hibernateLazyInitializer", "handler"})
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    public ClientePersona clientePersona;
+*/
 
     @JsonIgnoreProperties({"pedidoFacturas","hibernateLazyInitializer","handler"})
     @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE}, fetch = FetchType.LAZY)
@@ -46,10 +54,7 @@ public class PedidoFactura {
     @ManyToOne
     private Estado estado;
 
-    public  void  addrowPedidos(RowPedido rowPedido){
-        this.rowPedidos.add(rowPedido);
 
-    }
 
 
 

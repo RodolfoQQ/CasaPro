@@ -1,4 +1,4 @@
-package com.proyecto.CasaPro.entidades;
+package com.proyecto.CasaPro.entidades.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

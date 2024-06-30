@@ -1,12 +1,11 @@
 package com.proyecto.CasaPro.servicios;
 
 import com.proyecto.CasaPro.entidades.Andamio;
-import com.proyecto.CasaPro.entidades.DTODetallessinubicacion;
+import com.proyecto.CasaPro.entidades.dto.DTODetallessinubicacion;
 import com.proyecto.CasaPro.entidades.PisosAndamio;
 import com.proyecto.CasaPro.entidades.SloteUbicacion;
 import com.proyecto.CasaPro.repositorios.RepositoryAlmacen;
 import jakarta.transaction.Transactional;
-import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,7 @@ public class ServiceAlmacen {
     private RepositoryAlmacen repositoryAlmacen;
 
     public List<Andamio> findAllandamio(){
+
 
         return repositoryAlmacen.findAll();
     }

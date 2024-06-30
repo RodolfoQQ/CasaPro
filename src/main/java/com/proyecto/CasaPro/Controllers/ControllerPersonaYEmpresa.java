@@ -6,12 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-
+//evaluar a eliminar no se esta usando
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api/personaYempresa")
 public class ControllerPersonaYEmpresa {
-
+/*
     @Autowired private ServicePersonaYEmpresa service;
 
     @GetMapping("/{rucODni}")
@@ -28,5 +28,5 @@ public class ControllerPersonaYEmpresa {
          }
          
         return ResponseEntity.ok(hashMap);
-    }
+    }*/
 }

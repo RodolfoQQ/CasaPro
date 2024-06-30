@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Calendar;
 import java.util.List;
-
+//evaluar a eliminarno se usa
 @CrossOrigin(origins ={"http://localhost:4200"})
 @RestController
 @RequestMapping("/api/ubicacion")

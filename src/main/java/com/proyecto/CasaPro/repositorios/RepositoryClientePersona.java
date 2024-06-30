@@ -6,12 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RepositoryClientePersona extends JpaRepository<ClientePersona,Integer> {
 
 
-    public ClientePersona findByDniLikeIgnoreCase(String dni);
+    public Optional<ClientePersona> findByDniLikeIgnoreCase(String dni);
 
 
 

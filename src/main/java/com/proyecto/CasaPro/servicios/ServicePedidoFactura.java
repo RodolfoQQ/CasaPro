@@ -6,44 +6,29 @@ import com.proyecto.CasaPro.repositorios.RepositoryPedidoFactura;
 import com.proyecto.CasaPro.repositorios.RepositoryProducto;
 import com.proyecto.CasaPro.repositorios.RepositoryUbicacion;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
-public class ServicePedidoFactura {
-
-    @Autowired
+public class ServicePedidoFactura implements IpedidoFactura {
     private RepositoryPedidoFactura service;
-
-    @Autowired
-    private RepositoryUbicacion repositoryUbicacion;
-
-    @Autowired
     private RepositoryDetalleUbicacion repositoryDetalleUbicacion;
 
     @Transactional
     public PedidoFactura savePedido(PedidoFactura pedidoFactura){
-        PedidoFactura dataPedidoFacturaSaved= service.save(pedidoFactura);
-
-        List<RowPedido> rowPedidos=pedidoFactura.getRowPedidos();
-        for (RowPedido row :rowPedidos){
-            Producto producto =row.getProducto();
-            Integer cantidad=row.getCantidad();
-
-            DetalleUbicacion prodcutodelDetalle= repositoryDetalleUbicacion.buscaDetallePorProducto(producto.getCodProducto());
-            if (prodcutodelDetalle !=null){
-                    prodcutodelDetalle.setStock(prodcutodelDetalle.getStock()-cantidad);
-                    repositoryDetalleUbicacion.save(prodcutodelDetalle);
-            }
-        }
-
-      return dataPedidoFacturaSaved;
+        return service.save(pedidoFactura);
     }
 
 
+    public Optional<Object> cantidadDisponible (Integer idproduct){
+
+        return service.cantidadDisponible(idproduct);
+    }
 
     public List<PedidoFactura> listaPedidosPersona(){
 

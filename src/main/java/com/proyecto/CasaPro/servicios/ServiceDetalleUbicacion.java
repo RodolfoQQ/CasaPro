@@ -1,9 +1,8 @@
 package com.proyecto.CasaPro.servicios;
 
 import com.proyecto.CasaPro.entidades.DetalleUbicacion;
-import com.proyecto.CasaPro.entidades.DtoAddDetalleubicacion;
+import com.proyecto.CasaPro.entidades.dto.DtoAddDetalleubicacion;
 import com.proyecto.CasaPro.entidades.Producto;
-import com.proyecto.CasaPro.entidades.SloteUbicacion;
 import com.proyecto.CasaPro.repositorios.RepositoryDetalleUbicacion;
 import com.proyecto.CasaPro.repositorios.RepositoryProducto;
 import com.proyecto.CasaPro.repositorios.RepositoryUbicacion;
@@ -11,7 +10,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +25,10 @@ public class ServiceDetalleUbicacion {
     @Autowired
     private RepositoryProducto repositoryProducto;
 
-
+    @Transactional
+    public DetalleUbicacion saveDetalle (DetalleUbicacion detalleUbicacion){
+        return  repositoryDetalleUbicacion.save(detalleUbicacion);
+    }
 
 
     public DetalleUbicacion updateProductoEnDetalle(Integer codDetalle, Integer codproducto  ){
@@ -55,6 +56,10 @@ public class ServiceDetalleUbicacion {
     public void actualizarubicacionendetalle(Integer codubicacion, Integer coddetalle  ){
 
         repositoryDetalleUbicacion.updateUbicacionOndetalle(codubicacion, coddetalle);
+    }
+
+    public DetalleUbicacion buscarDetallePorProducto (Integer codProd){
+        return  repositoryDetalleUbicacion.buscaDetallePorProducto(codProd);
     }
 
 

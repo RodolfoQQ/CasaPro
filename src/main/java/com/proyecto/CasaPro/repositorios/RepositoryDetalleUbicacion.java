@@ -1,7 +1,6 @@
 package com.proyecto.CasaPro.repositorios;
 
 import com.proyecto.CasaPro.entidades.DetalleUbicacion;
-import com.proyecto.CasaPro.entidades.DtoAddDetalleubicacion;
 import com.proyecto.CasaPro.entidades.Producto;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;

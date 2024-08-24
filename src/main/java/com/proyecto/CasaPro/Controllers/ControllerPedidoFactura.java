@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4200"} ,originPatterns = {"*"})
 @RestController
 @RequestMapping("/api/pedido")
 @AllArgsConstructor

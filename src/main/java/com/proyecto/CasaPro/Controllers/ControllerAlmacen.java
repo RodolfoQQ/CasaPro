@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-@CrossOrigin(origins={"http://localhost:4200"})
+@CrossOrigin(origins={"http://localhost:4200"},originPatterns = {"*"})
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/almacen")
